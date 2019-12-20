@@ -62,6 +62,9 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
+
+app.use('/medium-editor.css', express.static('./node_modules/@voxgig/medium-editor/dist/css/medium-editor.css'))
+
 var uri = 'http://localhost:' + port
 
 var _resolve

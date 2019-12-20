@@ -1,4 +1,4 @@
-import MediumEditor from 'medium-editor'
+import MediumEditor from '@voxgig/medium-editor'
 
 export default {
   name: 'medium-editor',
