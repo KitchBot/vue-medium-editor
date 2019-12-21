@@ -1,45 +1,54 @@
 {
-  "name": "@voxgig/vue2-medium-editor",
-  "version": "2.0.0",
-  "description": "A VueJS plugin for medium-editor",
-  "main": "index.js",
+  "name": "@voxgig/vue-medium-editor",
+  "version": "3.0.0",
+  "main": "./dist/VueMediumEditor.common.js",
   "scripts": {
-    "test": "node index.js",
-    "clean": "rm -rf node_modules package-lock.json yarn.lock dist",
-    "build": "webpack",
-    "build-production": "NODE_ENV=production webpack",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name VueMediumEditor ./src/index.js",
+    "watch": "vue-cli-service build --target lib --name VueMediumEditor ./src/index.js --watch --report",
+    "lint": "vue-cli-service lint",
+    "test": "mocha-webpack --webpack-config test/test.webpack.config.js --require test/setup.js test/**/*.spec.js",
+    "coveralls": "lab -s -P test -r lcov | coveralls",
+    "coverage": "lab -v -P test -r html > coverage.html",
+    "prettier": "prettier --write --no-semi --single-quote *.js src/**/*.js lib/*.js srv/*.setup.js test/*.js web/public/*.js web/tm/**/*.js",
+    "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm test",
-    "repo-tag": "REPO_VERSION=`node -e \"console.log(require('./package').version)\"`; echo TAG: v$REPO_VERSION && git commit -a -m v$REPO_VERSION && git push && git tag v$REPO_VERSION && git push --tags;",
-    "repo-publish": "npm run clean && npm i && npm run build && npm run build-production && npm run repo-tag && npm publish  --access public --registry http://registry.npmjs.org"
+    "repo-deps": "node -e \"require('fs').writeFileSync('./deps.json',JSON.stringify({dependencies:require('./package').dependencies}))\"",
+    "repo-check": "REPO_VERSION=`node -e \"console.log(require('./package').version)\"` && echo TAG: v$REPO_VERSION && [[ '' == `git tag --list v${REPO_VERSION}` ]]",
+    "repo-tag": "REPO_VERSION=`node -e \"console.log(require('./package').version)\"` && echo TAG: v$REPO_VERSION && git commit -a -m v$REPO_VERSION && git push && git tag v$REPO_VERSION && git push --tags;",
+    "repo-publish": "npm run repo-check && npm run clean && npm i --registry http://registry.npmjs.org && npm run prettier && npm run build && npm test && npm run repo-deps && npm run repo-tag && npm publish --registry http://registry.npmjs.org --access public",
+    "repo-publish-quick": "npm run repo-check && npm run prettier && npm run build && npm test && npm run repo-deps && npm run repo-tag && npm publish --registry http://registry.npmjs.org --access public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FranzSkuffka/vue-medium-editor.git"
-  },
-  "keywords": [
-    "vue",
-    "js",
-    "medium",
-    "editor",
-    "directive"
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
   ],
-  "author": "Jan Wirth <contact@jan-wirth.de>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/FranzSkuffka/vue-medium-editor/issues"
-  },
-  "homepage": "https://github.com/FranzSkuffka/vue-medium-editor#readme",
   "dependencies": {
     "@voxgig/medium-editor": "^6.0.0",
-    "webpack-cli": "^3.1.2"
+    "core-js": "^3.4.3",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "babel-loader": "^7.0.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babelify": "^7.3.0",
-    "babili": "^0.1.2",
-    "esm": "^3.2.25",
-    "uglifyjs-webpack-plugin": "^0.4.3",
-    "webpack": "^2.6.1"
+    "@hapi/code": "^7.0.0",
+    "@hapi/joi": "^16.1.8",
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "prettier": "^1.19.1",
+    "vue-template-compiler": "^2.6.10",
+    "jsdom": "^15.2.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^6.2.2",
+    "mocha-webpack": "^2.0.0-beta.0",
+    "webpack-node-externals": "^1.7.2"
   }
 }
