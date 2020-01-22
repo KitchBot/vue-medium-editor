@@ -1,6 +1,6 @@
 {
   "name": "@voxgig/vue-medium-editor",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "main": "./dist/VueMediumEditor.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -27,27 +27,27 @@
     "*.js"
   ],
   "dependencies": {
-    "@voxgig/medium-editor": "^6.0.0",
-    "core-js": "^3.4.3",
+    "@voxgig/medium-editor": "^6.1.0",
+    "core-js": "^3.6.4",
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@hapi/code": "^7.0.0",
+    "@hapi/code": "^8.0.1",
     "@hapi/joi": "^16.1.8",
-    "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
-    "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/cli-plugin-babel": "^4.1.2",
+    "@vue/cli-plugin-eslint": "^4.1.2",
+    "@vue/cli-service": "^4.1.2",
+    "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-eslint": "^10.0.3",
-    "eslint": "^5.16.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^6.1.2",
     "prettier": "^1.19.1",
     "vue-template-compiler": "^2.6.10",
-    "jsdom": "^15.2.1",
+    "jsdom": "^16.0.1",
     "jsdom-global": "^3.0.2",
-    "mocha": "^6.2.2",
+    "mocha": "^7.0.0",
     "mocha-webpack": "^2.0.0-beta.0",
     "webpack-node-externals": "^1.7.2"
   }
