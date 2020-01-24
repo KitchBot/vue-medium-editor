@@ -60,10 +60,10 @@ export default {
         this.$emit('input', this.text)
       })
 
-      this.api.subscribe('selectFont', (info) => {
+      this.api.subscribe('selectFont', info => {
         this.$emit('selectFont', info)
       })
-      
+
       // emit event to give parent access to MediumEditor instance
       this.$emit('editorCreated', this.api)
     }
