@@ -29,12 +29,19 @@ export default {
 
   mounted(evt) {
     this.createAndSubscribe()
+    this.add_fontnames()
   },
 
   beforeDestroy(evt) {
     this.tearDown()
   },
   methods: {
+    add_fontnames: function(fontnames) {
+      var fonts = ['Arial', 'Times New Roman', 'Courier New']
+      fonts = fonts.concat(fontnames || [])
+      var fontname_ext = this.api.getExtensionByName('fontname') || {}
+      fontname_ext.fonts = fonts
+    },
     tearDown() {
       this.api.unsubscribe('editableInput', this.emit)
       this.api.destroy()
