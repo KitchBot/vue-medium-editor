@@ -3,6 +3,7 @@
     <vue-medium-editor
       v-model="text"
       :options="options"
+      @selectFont="selectFont"
       />
   </div>
 </template>
@@ -36,6 +37,11 @@ export default {
         }
         
       }
+    }
+  },
+  methods: {
+    selectFont: function(info) {
+      this.emit$('select-font', info)
     }
   }
 }

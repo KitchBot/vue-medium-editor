@@ -27,7 +27,7 @@
     "*.js"
   ],
   "dependencies": {
-    "@voxgig/medium-editor": "^6.3.0",
+    "@voxgig/medium-editor": "^6.4.0",
     "core-js": "^3.6.4",
     "vue": "^2.6.10"
   },
